@@ -6,8 +6,12 @@ from pykafka import KafkaClient
 from datetime import datetime
 import yaml
 
-with open('app_conf.yaml', 'r') as f:
-    app_config = yaml.safe_load(f.read())
+try:
+    with open('~/config/app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
+except FileNotFoundError:
+    with open('app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
 
 client = KafkaClient(hosts="{}:{}".format(app_config['kafka']['server'], app_config['kafka']['port']))
 topic = client.topics[app_config['kafka']['topic']]

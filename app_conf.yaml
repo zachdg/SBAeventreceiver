@@ -1,4 +1,4 @@
 kafka:
-  server: kafka
+  server: ec2-34-223-239-244.us-west-2.compute.amazonaws.com
   port: 9092
   topic: events
